@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designers</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #1b4965, #5fa8d3);
+            color: #e3f6f5;
+            overflow: hidden;
+        }
+
+        .welcome-container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #e3f6f5;
+            display: inline-block;
+        }
+
+        .highlight {
+            color: #ffdd99;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .explore-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #005f73;
+            color: #e3f6f5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background-color: #0a9396;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1 id="typing-text">
+            <!-- Dynamic text will appear here -->
+        </h1>
+        <p class="subtitle">
+            Where creativity meets innovation.
+        </p>
+        <button class="explore-btn" onclick="exploreMore()">Explore More</button>
+    </div>
+
+    <script>
+        // Words to cycle through
+        const words = ["Designers", "Creators", "Innovators", "Dreamers"];
+        const typingText = document.getElementById("typing-text");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            const currentText = currentWord.substring(0, charIndex);
+
+            typingText.innerHTML = `Welcome to <span class="highlight">${currentText}</span>!`;
+
+            if (!isDeleting && charIndex < currentWord.length) {
+                charIndex++;
+                setTimeout(type, 150);
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(type, 100);
+            } else {
+                // Pause before deleting or switching to the next word
+                if (!isDeleting) {
+                    isDeleting = true;
+                    setTimeout(type, 1000);
+                } else {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 500);
+                }
+            }
+        }
+
+        function exploreMore() {
+            alert("Explore page coming soon!");
+        }
+
+        // Start the typing animation
+        type();
+    </script>
+</body>
+</html>
