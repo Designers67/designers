@@ -78,15 +78,20 @@
         }
 
         .main h1 {
-    font-size: 5rem; /* Increased font size */
-    font-weight: 800; /* Set font weight to bold */
-    background: linear-gradient(90deg, #3498DB, #5D6D7E, #85C1E9);
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-bottom: 20px;
-    animation: text-fade 5s infinite alternate;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Softer and less intense shadow */
+    font-size: 5rem; /* Large font size */
+    font-weight: 800; /* Bold text */
+    background: linear-gradient(90deg, #3498DB, #5D6D7E, #85C1E9); /* Gradient styling */
+    -webkit-background-clip: text; /* Clip gradient to text */
+    color: transparent; /* Keep the text itself transparent */
+    margin-bottom: 20px; /* Spacing below the text */
+    animation: text-fade 5s infinite alternate; /* Existing animation */
+    
+    /* Stronger, more visible shadow and outline */
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.9), /* Sharp black shadow for outline effect */
+        0 0 5px rgba(0, 0, 0, 0.7);    /* Slight outer glow */
 }
+
 
 
         .main p {
