@@ -22,7 +22,6 @@
             background: linear-gradient(180deg, #5D6D7E, #85929E, #D5D8DC);
             color: #fff;
             overflow: hidden;
-            animation: fadeIn 1.5s ease-out;
         }
 
         /* Navigation Bar */
@@ -38,6 +37,10 @@
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background: rgba(0, 0, 0, 0.9);
         }
 
         .navbar .logo {
@@ -61,11 +64,22 @@
             text-decoration: none;
             color: #ABB2B9;
             font-size: 1.1rem;
-            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .navbar ul li a:hover {
-            color: #fff;
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #fff;
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s ease;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
         }
 
         /* Main Section */
@@ -74,31 +88,26 @@
             text-align: center;
             width: 100%;
             padding: 50px;
-            animation: slideIn 1.5s ease-in-out;
         }
 
         .main h1 {
-    font-size: 5rem; /* Large font size */
-    font-weight: 800; /* Bold text */
-    background: linear-gradient(90deg, #3498DB, #5D6D7E, #85C1E9); /* Gradient styling */
-    -webkit-background-clip: text; /* Clip gradient to text */
-    color: transparent; /* Keep the text itself transparent */
-    margin-bottom: 20px; /* Spacing below the text */
-    animation: text-fade 5s infinite alternate; /* Existing animation */
-    
-    /* Stronger, more visible shadow and outline */
-    text-shadow: 
-        1px 1px 2px rgba(0, 0, 0, 0.9), /* Sharp black shadow for outline effect */
-        0 0 5px rgba(0, 0, 0, 0.7);    /* Slight outer glow */
-}
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3498DB, #5D6D7E, #85C1E9);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            animation: gradientText 5s linear infinite;
+        }
 
-
+        @keyframes gradientText {
+            0% { background-position: 0%; }
+            100% { background-position: 100%; }
+        }
 
         .main p {
-            font-size: 1.6rem;
-            color: #EAEDED; /* Light grey for better contrast */
+            font-size: 1.5rem;
             margin-bottom: 30px;
-            animation: fadeInUp 1.5s ease-out;
         }
 
         .main .btn {
@@ -109,13 +118,18 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            transition: 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+            animation: pulse 2s infinite;
         }
 
         .main .btn:hover {
             background: linear-gradient(90deg, #5D6D7E, #3498DB);
             transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Footer */
@@ -129,28 +143,7 @@
             opacity: 0.8;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes text-fade {
-            0% { text-shadow: 0 0 15px #3498DB, 0 0 30px #85C1E9; }
-            100% { text-shadow: 0 0 25px #85C1E9, 0 0 50px #5D6D7E; }
-        }
-
-        @keyframes slideIn {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Rain Animation */
+        /* Raindrop Animation */
         .rain {
             position: absolute;
             top: 0;
@@ -187,7 +180,6 @@
     </style>
 </head>
 <body>
-    <!-- Rain Effect -->
     <div class="rain">
         <div class="raindrop"></div>
         <div class="raindrop"></div>
@@ -199,7 +191,6 @@
         <div class="raindrop"></div>
     </div>
 
-    <!-- Navigation Bar -->
     <div class="navbar">
         <div class="logo">Designers</div>
         <ul>
@@ -209,14 +200,12 @@
         </ul>
     </div>
 
-    <!-- Main Section -->
     <div class="main">
         <h1>Unleashing Creativity</h1>
-        <p>We bring your ideas to life with innovative design and passion. Our team is here to craft the future of design, one project at a time.</p>
+        <p>We bring your ideas to life with innovative design and passion.</p>
         <a href="artworks_design.html"><button class="btn">Explore Our Work</button></a>
     </div>
 
-    <!-- Footer -->
     <footer>
         © 2024 Designers | All rights reserved
     </footer>
