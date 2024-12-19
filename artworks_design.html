@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/png" href="logo.png">
+    <title>Artworks - Designers</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #2c3e50; /* Dark background color */
+            overflow-x: hidden; /* Hide horizontal overflow */
+            color: white;
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+            position: relative;
+        }
+
+        /* Raindrop Animation */
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            animation: fall 2s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            position: relative;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        header h1 {
+            font-size: 4rem;
+            color: #ecf0f1;
+            margin: 0;
+            animation: bounceInDown 1.5s ease-out;
+        }
+
+        @keyframes bounceInDown {
+            0% { transform: translateY(-2000px); }
+            60% { transform: translateY(30px); }
+            80% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: #bdc3c7;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 40px;
+            margin-top: 40px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .art-card {
+            width: 280px;
+            height: 280px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            animation: scaleIn 1s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .art-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+
+        .art-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .art-card:hover img {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        .art-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .art-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ecf0f1;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Smooth Scroll Anchor Links */
+        .scroll-link {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            background: #34495e;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .scroll-link:hover {
+            background: #1abc9c;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Art Gallery</h1>
+    <p>Experience the beauty of art in a rainy, moody atmosphere</p>
+    <!-- Scroll link for Gallery section -->
+    <a href="#gallery" class="scroll-link">Scroll to Gallery</a>
+</header>
+
+<!-- Gallery Section -->
+<div id="gallery" class="gallery">
+    <div class="art-card">
+        <img src="logo5.png" alt="Artwork 1">
+    </div>
+    <div class="art-card">
+        <img src="logo4.png" alt="Artwork 2">
+    </div>
+    <div class="art-card">
+        <img src="logo2.png" alt="Artwork 3">
+    </div>
+    <div class="art-card">
+        <img src="logo1.png" alt="Artwork 4">
+    </div>
+    <div class="art-card">
+        <img src="logo3.png" alt="Artwork 5">
+    </div>
+    <div class="art-card">
+        <img src="https://via.placeholder.com/280" alt="Artwork 6">
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2024 Designers | All rights reserved</p>
+</footer>
+
+<!-- Raindrop Effect Script -->
+<script>
+    // Generate raindrops dynamically from the start
+    const body = document.body;
+    for (let i = 0; i < 100; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('raindrop');
+        drop.style.left = `${Math.random() * 100}vw`;
+        drop.style.animationDuration = `${Math.random() * 2 + 1}s`; // Randomize fall speed
+        body.appendChild(drop);
+    }
+
+    // Scroll effect when button is clicked
+    const scrollButton = document.querySelector('.scroll-link');
+    scrollButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        document.querySelector('#gallery').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

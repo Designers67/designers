@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/png" href="logo.png">
+    <title>About Us - Designers</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #2F4F4F, #1E1E1E);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 25px;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #FFD700;
+            animation: glow 3s infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            color: #ADD8E6;
+            margin: 20px 0;
+        }
+
+        .btn-large {
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            color: #0B0C10;
+            background: linear-gradient(90deg, #FFD700, #FF8C42);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-large:hover {
+            background: linear-gradient(90deg, #FF8C42, #FFD700);
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin: 20px 0;
+            color: #ADD8E6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: #FFD700;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Background Animations */
+        .raindrop {
+            position: absolute;
+            top: -50px;
+            width: 2px;
+            height: 15px;
+            background: #00FFFF;
+            animation: fall 2s linear infinite;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #FFD700; }
+            100% { text-shadow: 0 0 30px #FF8C42; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Designers</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>About Us</h1>
+        <p>Crafting creativity, one design at a time.</p>
+        <a href="#about" class="btn-large">Know About Us</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>The Designers Team</h2>
+        <p>
+            Welcome to the vibrant and inspiring world of "The Designers Team." 
+            Our passion lies in crafting designs that not only look stunning but also communicate effectively. 
+            We specialize in a wide range of creative services, including branding, UI/UX design, and concept development. 
+            With a commitment to excellence and innovation, our team transforms simple ideas into extraordinary realities. 
+            Each project we take on is a blend of artistry, strategy, and technical expertise. 
+            Collaboration and creativity are the cornerstones of our approach, ensuring that every client’s unique vision comes to life seamlessly.
+        </p>
+        <a href="members_design.html" class="btn-large">Meet Our Team Members</a>
+    </section>
+
+    <!-- Background Animation -->
+    <script>
+        for (let i = 0; i < 100; i++) {
+            let drop = document.createElement('div');
+            drop.className = 'raindrop';
+            drop.style.left = Math.random() * window.innerWidth + 'px';
+            drop.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(drop);
+        }
+
+        document.querySelectorAll('.btn-large')[0].addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Designers | All rights reserved
+    </footer>
+</body>
+</html>

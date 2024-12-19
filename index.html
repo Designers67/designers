@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/png" href="logo.png">
+    <title>Designers</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #1b4965, #5fa8d3);
+            color: #e3f6f5;
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.8s forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .welcome-container, .home-container {
+            text-align: center;
+            max-width: 600px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #e3f6f5;
+            display: inline-block;
+        }
+
+        .highlight {
+            color: #ffdd99;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .explore-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #005f73;
+            color: #e3f6f5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background-color: #0a9396;
+            transform: scale(1.1);
+        }
+
+        /* Home Page Styles */
+        .home-container h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #e3f6f5;
+            padding: 10px 20px;
+            background-color: #005f73;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #0a9396;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Page -->
+    <div class="welcome-container" id="welcome-page">
+        <h1 id="typing-text">
+            <!-- Dynamic text will appear here -->
+        </h1>
+        <p class="subtitle">
+            Where creativity meets innovation.
+        </p>
+        <button class="explore-btn" onclick="showHome()">Explore More</button>
+    </div>
+
+    <!-- Home Page -->
+    <div class="home-container hidden" id="home-page">
+        <h2>Welcome to Designers Home Page</h2>
+        <p>Discover the best of our creativity and innovation.</p>
+        <div class="nav-links">
+            <a href="home_design.html">Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Typing animation logic for Welcome Page
+        const words = ["Designers", "Creators", "Innovators", "Dreamers"];
+        const typingText = document.getElementById("typing-text");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            const currentText = currentWord.substring(0, charIndex);
+
+            typingText.innerHTML = `Welcome to <span class="highlight">${currentText}</span>!`;
+
+            if (!isDeleting && charIndex < currentWord.length) {
+                charIndex++;
+                setTimeout(type, 150);
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(type, 100);
+            } else {
+                if (!isDeleting) {
+                    isDeleting = true;
+                    setTimeout(type, 1000);
+                } else {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 500);
+                }
+            }
+        }
+
+        // Show Home Page with animation
+        function showHome() {
+            const welcomePage = document.getElementById("welcome-page");
+            const homePage = document.getElementById("home-page");
+
+            // Add fade-out to welcome page
+            welcomePage.classList.add("fade-out");
+            setTimeout(() => {
+                welcomePage.classList.add("hidden"); // Hide after fade-out
+                homePage.classList.remove("hidden"); // Show home page
+                homePage.classList.add("fade-in");  // Add fade-in to home page
+            }, 800); // Match the fade-out animation duration
+        }
+
+        // Start typing animation
+        type();
+    </script>
+</body>
+</html>
