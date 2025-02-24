@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/png" href="logo.png">
+    <title>Services - Designers</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #d7efff, #b3e4ff);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #084C61;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #05668D;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #0294A5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hero button:hover {
+            transform: scale(1.1);
+            background-color: #037CA3;
+        }
+
+        /* Background Animation */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: rise 10s infinite;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            color: #084C61;
+            margin-bottom: 20px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #05668D;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #4A4A4A;
+        }
+
+        .card ul {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .card ul li {
+            font-size: 0.9rem;
+            color: #05668D;
+            margin-bottom: 5px;
+        }
+        .arg{
+            color: #D6D3D7;
+        }
+        .arg a{
+            text-decoration: none;
+            color: #D6D3D7;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Welcome to Our Services</h1>
+        <p>Discover what we can do for you!</p>
+        <button onclick="scrollToServices()">Explore Services</button>
+        <div class="background">
+            <!-- Floating bubbles -->
+            <div class="bubble" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="bubble" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="bubble" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="bubble" style="left: 50%; animation-delay: 6s;"></div>
+            <div class="bubble" style="left: 70%; animation-delay: 8s;"></div>
+            <div class="bubble" style="left: 90%; animation-delay: 10s;"></div>
+        </div>
+    </div>
+
+    <div class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Building high-quality, responsive websites tailored to your needs. We ensure modern design and top-notch performance.</p>
+                <ul>
+                    <li>Custom website creation</li>
+                    <li>Responsive and mobile-friendly designs</li>
+                    <li>Client satisfaction is our priority</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Graphic Design</h3>
+                <p>Creative designs that bring your ideas to life. Perfect for branding and visual storytelling.</p>
+                <ul>
+                    <li>Logo and branding design</li>
+                    <li>Eye-catching promotional materials</li>
+                    <li>Focus on unique visual identities</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>SEO Optimization</h3>
+                <p>Improving your website's visibility on search engines with tailored strategies.</p>
+                <ul>
+                    <li>Comprehensive SEO audits</li>
+                    <li>Keyword and content optimization</li>
+                    <li>Advanced analytics and insights</li>
+                </ul>
+            </div>
+            <br>
+            <div class="card">
+                <div class="arg">
+                <h3>..starting soon..</h3>
+                <p>Product Sponsers and New Stuffs</p>
+                <ul>
+                    <ul style="text-align: center;"><a href="arg.html">ARG</ul>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll to services section
+        function scrollToServices() {
+            document.getElementById('services').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Generate bubbles dynamically
+        const background = document.querySelector('.background');
+
+        for (let i = 0; i < 20; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDelay = `${Math.random() * 10}s`;
+            bubble.style.width = `${20 + Math.random() * 40}px`;
+            bubble.style.height = bubble.style.width;
+            background.appendChild(bubble);
+        }
+    </script>
+    <script
+    chatbot_id="6788d6124eed1c1c6840c7da"
+    data-type="default"
+    src="https://app.thinkstack.ai/bot/thinkstackai-loader.min.js"
+></script>
+</body>
+</html>

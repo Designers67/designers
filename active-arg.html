@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/png" href="logo.png">
+    <title>Designers Webpage - ARG</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #a8c0ff, #3f2b96); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .screen {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        input, button {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            display: none;
+            font-style: italic;
+        }
+
+        #secret-image {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .welcome:hover{
+            color: light;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="screen">
+        <h1 class="Welcome">Welcome</h1>
+        <input type="text" id="userInput" placeholder="User Input" />
+        <button onclick="unlockSecret()">Process</button>
+        <div id="output" class="output"></div>
+        <img id="secret-image" src="#" alt="Hidden Image" />
+    </div>
+
+    <script>
+        function unlockSecret() {
+            const userInput = document.getElementById('userInput').value.toLowerCase();
+            const outputDiv = document.getElementById('output');
+            const secretImage = document.getElementById('secret-image');
+            
+            // New codes added for enhanced mystery
+            if (userInput === "faidul") {
+                outputDiv.style.display = "block";
+                outputDiv.innerHTML = "The secret has been revealed. The code 'Faidul' opens something powerful...";
+                secretImage.style.display = "block";
+            } else if (userInput === "hint") {
+                outputDiv.style.display = "block";
+                outputDiv.innerHTML = "Try something deeper... Something personal... The name that echoes.";
+            } else if (userInput === "memory") {
+                outputDiv.style.display = "block";
+                outputDiv.innerHTML = "You recall something important... the name you saw long ago. A shadow in the past.";
+            } else if (userInput === "hidden") {
+                outputDiv.style.display = "block";
+                outputDiv.innerHTML = "Not everything is visible... A hidden page is waiting. Find it if you dare.";
+            } else if (userInput === "unlock") {
+                outputDiv.style.display = "block";
+                outputDiv.innerHTML = "The lock is undone. Welcome to the hidden space.";
+                // Trigger a new secret action like revealing another image
+                secretImage.src = "https://via.placeholder.com/350"; // Change image when this code is used
+                secretImage.style.display = "block";
+            } else {
+                outputDiv.style.display = "block";
+                outputDiv.innerHTML = "This path is unclear... Try again...";
+            }
+        }
+    </script>
+
+</body>
+</html>

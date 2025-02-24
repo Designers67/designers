@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/png" href="logo.png">
+    <title>Designers Webpage - ARG</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #a8c0ff, #3f2b96); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .screen {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        input, button {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            display: none;
+            font-style: italic;
+        }
+
+        #secret-image {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .hero{
+            color: white;
+            font-size: 24px;
+        }
+        .hero-span{
+            color: #FA4C4E;
+        }
+        .hero:hover{
+            color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <div class="hero"><strong>Section Under Development<span class="hero-span">(CLOSED)</span></strong></div>
+        <h1>Welcome</h1>
+        <input type="text" id="userInput" placeholder="User Input" />
+        <button onclick="unlockSecret()">Process</button>
+        <div id="output" class="output"></div>
+        <img id="secret-image" src="https://via.placeholder.com/300" alt="Hidden Image" />
+    </div>
+
+<script>
+    function unlockSecret() {
+        const userInput = document.getElementById('userInput').value.toLowerCase();
+        const outputDiv = document.getElementById('output');
+        
+        if (userInput === "designers") {
+            outputDiv.style.display = "block";
+            outputDiv.innerHTML = "WE WILL BE IN TOUCH";
+        } else {
+            outputDiv.style.display = "block";
+            outputDiv.innerHTML = "Access Denied";
+        }
+    }
+</script>
+
+
+</body>
+</html>
