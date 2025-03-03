@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>T-Shirt Display - Designers</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.container {
+    position: relative;
+    width: 400px;
+    height: 500px; /* Adjusted for a more compact look */
+    touch-action: pan-y;
+    text-align: center;
+}
+.platform-layer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) perspective(200px) rotateX(30deg);
+    width: 250px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.layer1 {
+    background: linear-gradient(to top, #3a86ff, #00b4d8);
+}
+.layer2 {
+    width: 230px;
+    bottom: 25px;
+    background: linear-gradient(to top, #0077b6, #023e8a);
+}
+.layer3 {
+    width: 210px;
+    bottom: 30px;
+    background: linear-gradient(to top, #005f73, #001219);
+}
+.tshirt {
+    position: absolute;
+    top: 30px; /* Adjusted to be closer to the top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    max-height: 300px;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.arrow:hover {
+    background: #023e8a;
+}
+.left {
+    left: -60px;
+}
+.right {
+    right: -60px;
+}
+.details-btn {
+    position: absolute;
+    bottom: 20px; /* Reduced space below the button */
+    right: 15px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+.details-btn:hover {
+    background: #c0392b;
+}
+.pricing-info {
+    position: absolute;  /* Positioning below the T-shirt */
+    bottom: 90px;  /* Positioned just below the T-shirt */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container" id="swipeContainer">
+    <img class="tshirt" src="tshirt1.jpg" id="tshirtImage" alt="T-Shirt">
+    <div class="platform-layer layer3"></div>
+    <div class="platform-layer layer2"></div>
+    <div class="platform-layer layer1"></div>
+    <button class="arrow left" onclick="prevTshirt()">&#8592;</button>
+    <button class="arrow right" onclick="nextTshirt()">&#8594;</button>
+    <button class="details-btn" id="detailsButton" onclick="goToDetails()">View Details</button>
+
+    <!-- Pricing Info below T-shirt -->
+    <div class="pricing-info">
+        <p class="price" id="price">$00.00</p>
+        <p class="details-text" id="detailsText">Best design for casual wear</p>
+    </div>
+</div>
+
+<script>
+    const tshirts = [
+        { img: "1.png", link: "details1.html", price: "BDT 200", details: "Best design for casual wear" },
+        { img: "2.png", link: "details2.html", price: "BDT 300", details: "Comfortable cotton material" },
+        { img: "3.png", link: "details3.html", price: "BDT 200", details: "Premium quality fabric" },
+        { img: "4.png", link: "details4.html", price: "BDT 500", details: "Perfect for every season" },
+        { img: "5.png", link: "details5.html", price: "BDT 100", details: "Trendy and stylish" },
+    ];
+
+    let index = 0;
+    const tshirtImage = document.getElementById("tshirtImage");
+    const detailsButton = document.getElementById("detailsButton");
+    const priceText = document.getElementById("price");
+    const detailsText = document.getElementById("detailsText");
+
+    function nextTshirt() {
+        index = (index + 1) % tshirts.length;
+        updateTshirt();
+    }
+
+    function prevTshirt() {
+        index = (index - 1 + tshirts.length) % tshirts.length;
+        updateTshirt();
+    }
+
+    function updateTshirt() {
+        tshirtImage.style.opacity = "0";
+        setTimeout(() => {
+            tshirtImage.src = tshirts[index].img;
+            detailsButton.setAttribute("onclick", "window.location.href='" + tshirts[index].link + "'");
+            priceText.textContent = tshirts[index].price;
+            detailsText.textContent = tshirts[index].details;
+            tshirtImage.style.opacity = "1";
+        }, 300);
+    }
+
+    setInterval(nextTshirt, 4000);
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.getElementById("swipeContainer").addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.getElementById("swipeContainer").addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    document.getElementById("swipeContainer").addEventListener("mousedown", (e) => {
+        touchStartX = e.clientX;
+    });
+
+    document.getElementById("swipeContainer").addEventListener("mouseup", (e) => {
+        touchEndX = e.clientX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) nextTshirt();
+        if (touchEndX > touchStartX + 50) prevTshirt();
+    }
+
+    function goToDetails() {
+        window.location.href = tshirts[index].link;
+    }
+</script>
+
+</body>
+</html>
